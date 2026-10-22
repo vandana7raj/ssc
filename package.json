@@ -2,7 +2,17 @@
   "name": "ssc-prep-platform",
   "version": "1.0.0",
   "private": true,
-  "scripts": {"dev":"next dev","build":"next build","start":"next start","lint":"next lint","typecheck":"tsc --noEmit"},
-  "dependencies": {"@supabase/ssr":"^0.5.2","@supabase/supabase-js":"^2.49.1","lucide-react":"^0.468.0","next":"^15.1.6","react":"^19.0.0","react-dom":"^19.0.0","recharts":"^2.15.0","zod":"^3.24.1"},
-  "devDependencies": {"@types/node":"^22.10.5","@types/react":"^19.0.7","@types/react-dom":"^19.0.3","autoprefixer":"^10.4.20","postcss":"^8.4.49","tailwindcss":"^3.4.17","typescript":"^5.7.3"}
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "cf:build": "opennextjs-cloudflare build",
+    "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "cf:typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
+  },
+  "dependencies": {"@supabase/ssr":"^0.5.2","@supabase/supabase-js":"^2.49.1","lucide-react":"^0.468.0","next":"16.4.2","react":"^19.0.0","react-dom":"^19.0.0","recharts":"^2.15.0","zod":"^3.24.1"},
+  "devDependencies": {"@opennextjs/cloudflare":"1.20.9","@tailwindcss/postcss":"4.3.3","@types/node":"^22.10.5","@types/react":"^19.0.7","@types/react-dom":"^19.0.3","eslint":"^10.13.0","postcss":"^8.4.49","tailwindcss":"4.3.3","typescript":"^5.7.3","typescript-eslint":"8.72.0","wrangler":"4.151.3"}
 }
