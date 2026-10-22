@@ -14,5 +14,13 @@
       "service": "ssc"
     }
   ],
+  "previews": {
+    "services": [
+      {
+        "binding": "WORKER_SELF_REFERENCE",
+        "service": "ssc"
+      }
+    ]
+  },
   "observability": { "enabled": true }
 }

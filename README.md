@@ -43,10 +43,10 @@ Import the GitHub repository in Vercel, use the Next.js preset, and add `NEXT_PU
 This project uses the OpenNext Cloudflare adapter. Do not use the Wrangler migration command or `wrangler deploy` as the application build command. The adapter scripts build Next.js into `.open-next` and deploy the generated Worker.
 
 - For a local deploy, run `npm run cf:deploy` (`opennextjs-cloudflare build` followed by `opennextjs-cloudflare deploy`).
-- For Cloudflare Workers Builds, set **Build command** to `npm run cf:build` and **Deploy command** to `npx opennextjs-cloudflare deploy`. Workers Builds runs these as sequential separate steps. Do not set the deploy command to `npm run cf:deploy`, which would rebuild an already-built Worker.
+- For Cloudflare Workers Builds, set **Build command** to `npx opennextjs-cloudflare build`, **Deploy command** to `npx opennextjs-cloudflare deploy`, and (for non-production branches) **Preview command** to `npx wrangler preview`. Workers Builds runs the build before deploy or preview. Do not set the deploy command to `npm run cf:deploy`, which would rebuild an already-built Worker.
 - Use Node.js 22 or newer in the Cloudflare build environment. The adapter requires Wrangler 4.148 or newer; these are pinned in the lockfile.
 - The Worker name, self-reference binding, Node compatibility flag, static assets binding and compatibility date are in `wrangler.jsonc`. If the Worker already has a different name in Cloudflare, change `name` and the `WORKER_SELF_REFERENCE.service` value together.
-- Add required production environment variables and secrets through Cloudflare’s Worker settings; never put secrets in this repository.
+- Add required variables and secrets separately in Cloudflare Production and Preview settings; never put secrets in this repository. Cloudflare Preview service bindings target the production Worker, so the WORKER_SELF_REFERENCE Preview binding targets ssc.
 - Run `npm run cf:preview` to exercise the adapted Worker locally before deployment.
 
 ## Database notes
